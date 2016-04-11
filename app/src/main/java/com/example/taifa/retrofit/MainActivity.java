@@ -77,3 +77,17 @@ public class MainActivity extends ListActivity implements Callback<StackOverflow
 
         return true;
     }
+    @Override
+    public void onResponse(Response<StackOverflowQuestions> response, Retrofit retrofit) {
+        setProgressBarIndeterminateVisibility(false);
+        ArrayAdapter<Question> adapter = (ArrayAdapter<Question>) getListAdapter();
+        adapter.clear();
+        adapter.addAll(response.body().items);
+    }
+
+    @Override
+    public void onFailure(Throwable t) {
+        Toast.makeText(MainActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+    }
+}
+
