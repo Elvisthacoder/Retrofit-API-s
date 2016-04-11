@@ -45,3 +45,8 @@ public class MainActivity extends ListActivity implements Callback<StackOverflow
         setProgressBarIndeterminateVisibility(true);
         setProgressBarVisibility(true);
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
