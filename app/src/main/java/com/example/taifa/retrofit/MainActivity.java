@@ -50,3 +50,10 @@ public class MainActivity extends ListActivity implements Callback<StackOverflow
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        setProgressBarIndeterminateVisibility(true);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.stackexchange.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
